@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/Layout';
 import { makeApiUrl } from '../../lib/api';
 import * as Qiita from '../../services/qiita/models';
+import QiitaItemDetail from '../../components/Qiita/ItemDetail';
 
 type Props = {
   item: Qiita.Item;
@@ -11,9 +12,8 @@ type Props = {
 const ItemPage: NextPage<Props> = props => (
   <Layout>
     <div>
-      <h1>Qiita Item</h1>
-      <h2>{props.item.title}</h2>
-      <div>{props.item.body}</div>
+      <h1>Qiita Item Detail</h1>
+      <QiitaItemDetail item={props.item} />
     </div>
   </Layout>
 );
