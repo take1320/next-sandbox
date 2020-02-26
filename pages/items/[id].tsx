@@ -18,8 +18,8 @@ const ItemPage: NextPage<Props> = props => (
   </Layout>
 );
 
-ItemPage.getInitialProps = async (context: NextPageContext): Promise<Props> => {
-  const { query, req } = context;
+ItemPage.getInitialProps = async (ctx: NextPageContext): Promise<Props> => {
+  const { query, req } = ctx;
   const { id } = query;
   const res = await fetch(makeApiUrl(`/api/qiita/items/${id}`, req));
   const item = await res.json();

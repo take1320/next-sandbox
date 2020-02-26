@@ -12,9 +12,8 @@ export const initialState: UserDataState = {
 
 const userDataReducer: Reducer<UserDataState, UserDataAction> = (
   state: UserDataState = initialState,
-  action: any,
+  action: UserDataAction,
 ): UserDataState => {
-  console.log(action);
   switch (action.type) {
     case ActionType.FAILURE:
       return {

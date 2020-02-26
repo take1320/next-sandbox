@@ -10,7 +10,6 @@ type Props = {
   item?: User;
   errors?: string;
 };
-
 class InitialPropsDetail extends React.Component<Props> {
   static getInitialProps = async ({ query }: NextPageContext) => {
     try {
