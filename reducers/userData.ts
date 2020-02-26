@@ -1,4 +1,5 @@
-import { actionTypes, UserDataAction } from '../actions/userData';
+import { UserDataAction } from '../actions/userData';
+import * as ActionType from '../actions/userDataConstatns';
 import { Reducer } from 'react';
 
 export interface UserDataState {
@@ -12,15 +13,16 @@ export const initialState: UserDataState = {
 const userDataReducer: Reducer<UserDataState, UserDataAction> = (
   state: UserDataState = initialState,
   action: any,
-):UserDataState => {
+): UserDataState => {
+  console.log(action);
   switch (action.type) {
-    case actionTypes.FAILURE:
+    case ActionType.FAILURE:
       return {
         ...state,
         ...{ error: action.error },
       };
 
-    case actionTypes.LOAD_DATA_SUCCESS:
+    case ActionType.LOAD_DATA_SUCCESS:
       return {
         ...state,
         ...{ placeholderData: action.data },
@@ -28,7 +30,7 @@ const userDataReducer: Reducer<UserDataState, UserDataAction> = (
 
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      // const hoge: never = action;
+      // const _: never = action;
       return state;
     }
   }

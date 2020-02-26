@@ -19,8 +19,6 @@ const configureStore = (initialState = {}) => {
     bindMiddleware([sagaMiddleware]),
   );
 
-  console.log('fuga');
-
   store.sagaTask = sagaMiddleware.run(rootSaga);
 
   return store;

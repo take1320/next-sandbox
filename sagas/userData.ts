@@ -1,13 +1,8 @@
-/* global fetch */
-
 import { put, takeLatest } from 'redux-saga/effects';
 import 'isomorphic-unfetch';
 
-import {
-  actionTypes,
-  failure,
-  loadDataSuccess,
-} from '../actions/userData';
+import { failure, loadDataSuccess } from '../actions/userData';
+import * as ActionType from '../actions/userDataConstatns';
 
 function* loadDataSaga() {
   try {
@@ -19,8 +14,5 @@ function* loadDataSaga() {
   }
 }
 
-const sagas = [
-  console.log("foooo"),
-  takeLatest(actionTypes.LOAD_DATA, loadDataSaga)
-];
+const sagas = [takeLatest(ActionType.LOAD_DATA, loadDataSaga)];
 export default sagas;

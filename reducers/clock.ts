@@ -1,4 +1,5 @@
-import { actionTypes, ClockAction } from '../actions/clock';
+import { ClockAction } from '../actions/clock';
+import * as ActionType from '../actions/clockConstatnts';
 import { Reducer } from 'react';
 
 export interface ClockState {
@@ -16,10 +17,10 @@ export const initialState: ClockState = {
 // // TODO actionをClockActionに設定すると
 const clockReducer: Reducer<ClockState, ClockAction> = (
   state: ClockState = initialState,
-  action: any,
+  action: ClockAction,
 ): ClockState => {
   switch (action.type) {
-    case actionTypes.TICK_CLOCK:
+    case ActionType.TICK_CLOCK:
       return {
         ...state,
         ...{ lastUpdate: action.ts, light: !!action.light },

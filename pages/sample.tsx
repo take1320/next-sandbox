@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { connect, useDispatch } from 'react-redux';
 
-import { loadData  } from '../actions/userData';
+import { loadData } from '../actions/userData';
 import { startClock, tickClock } from '../actions/clock';
 import Layout from '../components/Layout';
 import Page from '../components/page';
@@ -27,7 +27,7 @@ IndexPage.getInitialProps = async (
   const { store, isServer } = ctx;
   store.dispatch(tickClock(isServer));
 
-  if (!store.getState().placeholderData) {
+  if (!store.getState().userData.placeholderData) {
     store.dispatch(loadData());
   }
 

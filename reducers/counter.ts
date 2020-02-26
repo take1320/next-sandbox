@@ -1,6 +1,6 @@
-import { actionTypes, CounterAction } from '../actions/counter';
+import { CounterAction } from '../actions/counter';
+import * as ActionType from '../actions/counterConstants';
 import { Reducer } from 'react';
-
 export interface CounterState {
   count: number;
 }
@@ -14,19 +14,19 @@ const counterReducer: Reducer<CounterState, CounterAction> = (
   action: CounterAction,
 ): CounterState => {
   switch (action.type) {
-    case actionTypes.INCREMENT:
+    case ActionType.INCREMENT:
       return {
         ...state,
         ...{ count: state.count + 1 },
       };
 
-    case actionTypes.DECREMENT:
+    case ActionType.DECREMENT:
       return {
         ...state,
         ...{ count: state.count - 1 },
       };
 
-    case actionTypes.RESET:
+    case ActionType.RESET:
       return {
         ...state,
         ...{ count: initialState.count },
@@ -35,7 +35,7 @@ const counterReducer: Reducer<CounterState, CounterAction> = (
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       // const _: never = action;
-      console.log("hoge" + action.type);
+
       return state;
     }
   }

@@ -22,7 +22,6 @@ class Counter extends Component<Props> {
   };
 
   render() {
-    console.log(this.props);
     const { counter } = this.props;
     return (
       <div>

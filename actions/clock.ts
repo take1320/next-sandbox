@@ -1,21 +1,14 @@
-export const actionTypes = {
-  START_CLOCK: 'START_CLOCK',
-  TICK_CLOCK: 'TICK_CLOCK',
-};
+import * as ActionType from './clockConstatnts';
 
-export function startClock() {
-  return {
-    type: actionTypes.START_CLOCK as typeof actionTypes.START_CLOCK,
-  };
-}
+export const startClock = () => ({
+  type: ActionType.START_CLOCK as typeof ActionType.START_CLOCK,
+});
 
-export function tickClock(isServer: boolean) {
-  return {
-    type: actionTypes.TICK_CLOCK as typeof actionTypes.TICK_CLOCK,
-    light: !isServer,
-    ts: Date.now(),
-  };
-}
+export const tickClock = (isServer: boolean) => ({
+  type: ActionType.TICK_CLOCK as typeof ActionType.TICK_CLOCK,
+  light: !isServer,
+  ts: Date.now(),
+});
 
 export type ClockAction =
   | ReturnType<typeof startClock>

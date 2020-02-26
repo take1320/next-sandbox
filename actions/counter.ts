@@ -1,22 +1,16 @@
-export const actionTypes = {
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  RESET: 'RESET',
-};
+import * as ActionType from './counterConstants';
 
-export function increment() {
-  return { 
-    type: actionTypes.INCREMENT as typeof actionTypes.INCREMENT
-  };
-}
+export const increment = () => ({
+  type: ActionType.INCREMENT,
+});
 
-export function decrement() {
-  return { type: actionTypes.DECREMENT as typeof actionTypes.DECREMENT};
-}
+export const decrement = () => ({
+  type: ActionType.DECREMENT,
+});
 
-export function reset() {
-  return { type: actionTypes.RESET as typeof actionTypes.DECREMENT};
-}
+export const reset = () => ({
+  type: ActionType.RESET,
+});
 
 export type CounterAction =
   | ReturnType<typeof increment>
