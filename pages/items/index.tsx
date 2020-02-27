@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 import Layout from '../../components/Layout';
 import * as Qiita from '../../services/qiita/models';
 import QiitaItems from '../../components/Qiita/Items';
@@ -18,7 +18,7 @@ const ItemsPage: NextPage<Props> = props => (
   </Layout>
 );
 
-ItemsPage.getInitialProps = async (_: NextPageContext): Promise<Props> => {
+ItemsPage.getInitialProps = async (): Promise<Props> => {
   const fetchItems = getItemsFactory();
   const items = await fetchItems();
   return { items };

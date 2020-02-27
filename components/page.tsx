@@ -11,13 +11,13 @@ function Page({
   userData,
   title,
   clock,
-  counter
+  counter,
 }: any) {
   return (
     <div>
       <h1>{title}</h1>
       <Clock lastUpdate={clock.lastUpdate} light={clock.light} />
-      <Counter counter={counter}/>
+      <Counter counter={counter} />
       <nav>
         <Link href={linkTo}>
           <a>Navigate: {NavigateTo}</a>
