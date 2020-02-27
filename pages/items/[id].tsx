@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/Layout';
-import { makeApiUrl } from '../../lib/api';
+import { makeApiUrl } from '../../libs/api';
 import * as Qiita from '../../services/qiita/models';
 import QiitaItemDetail from '../../components/Qiita/ItemDetail';
 
