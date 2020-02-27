@@ -1,35 +1,29 @@
-import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
+import { FC } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { increment, decrement, reset } from '../actions/counter';
 import { ReduxState } from '../reducers/rootReducer';
-import Counter, { CounterProps } from '../components/Counter';
-import { FC } from 'react';
+import Counter from '../components/Counter';
 
-interface DispatchProps {
-  increment: () => void;
-  decrement: () => void;
-  reset: () => void;
-}
+const CounterContainer: FC = () => {
+  const dispatch = useDispatch();
+  const dispatchActions = {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
+    reset: () => dispatch(reset()),
+  };
+  const storeStates = useSelector((state: ReduxState) => ({
+    count: state.counter.count,
+  }));
 
-type EnhancedProps = DispatchProps & CounterProps;
-
-const mapStateToProps = (state: ReduxState): CounterProps => ({
-  count: state.counter.count,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
-  bindActionCreators(
-    {
-      increment: () => increment(),
-      decrement: () => decrement(),
-      reset: () => reset(),
-    },
-    dispatch,
+  return (
+    <Counter
+      count={storeStates.count}
+      increment={dispatchActions.increment}
+      decrement={dispatchActions.decrement}
+      reset={dispatchActions.reset}
+    />
   );
-
-const CounterContainer: FC<EnhancedProps> = props => {
-  return <Counter {...props} />;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
+export default CounterContainer;
