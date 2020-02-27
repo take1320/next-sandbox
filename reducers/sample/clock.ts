@@ -1,5 +1,5 @@
-import { ClockAction } from '../actions/clock';
-import * as ActionType from '../actions/clockConstatnts';
+import { ClockAction } from '../../actions/clock';
+import * as ActionType from '../../actions/clockConstatnts';
 import { Reducer } from 'react';
 
 export interface ClockState {

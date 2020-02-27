@@ -1,27 +1,29 @@
 import * as React from 'react';
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
+import { useSelector } from 'react-redux';
+import { getItems } from '../../actions/qiita';
+import { ReduxState } from '../../reducers/rootReducer';
 import Layout from '../../components/Layout';
-import * as Qiita from '../../services/qiita/models';
 import QiitaItems from '../../components/qiita/Items';
-import { getItemsFactory } from '../../services/qiita/api';
 
-type Props = {
-  items: Array<Qiita.Item>;
+const ItemsPage: NextPage = () => {
+  const storeStates = useSelector((state: ReduxState) => ({
+    items: state.qiita.items,
+  }));
+
+  return (
+    <Layout>
+      <div>
+        <h1>Qiita Items</h1>
+        <QiitaItems items={storeStates.items} />
+      </div>
+    </Layout>
+  );
 };
 
-const ItemsPage: NextPage<Props> = props => (
-  <Layout>
-    <div>
-      <h1>Qiita Items</h1>
-      <QiitaItems items={props.items} />
-    </div>
-  </Layout>
-);
-
-ItemsPage.getInitialProps = async (): Promise<Props> => {
-  const fetchItems = getItemsFactory();
-  const items = await fetchItems();
-  return { items };
+ItemsPage.getInitialProps = async (ctx: NextPageContext): Promise<void> => {
+  const { store } = ctx;
+  store.dispatch(getItems.start());
 };
 
 export default ItemsPage;
