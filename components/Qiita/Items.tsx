@@ -3,12 +3,12 @@ import Link from 'next/link';
 import * as Qiita from '../../services/qiita/models';
 
 type Props = {
-  items: Array<Qiita.Item>;
+  items?: Qiita.Item[];
 };
 
-const Item: FC<Props> = props => (
+const Items: FC<Props> = ({ items = [] }) => (
   <ul>
-    {props.items.map((i: Qiita.Item) => (
+    {items.map((i: Qiita.Item) => (
       <li key={i.id}>
         <Link href="/items/[id]" as={`/items/${i.id}`}>
           <a>{i.title}</a>
@@ -18,4 +18,4 @@ const Item: FC<Props> = props => (
   </ul>
 );
 
-export default Item;
+export default Items;

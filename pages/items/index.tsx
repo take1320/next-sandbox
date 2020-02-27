@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NextPage } from 'next';
 import Layout from '../../components/Layout';
 import * as Qiita from '../../services/qiita/models';
-import QiitaItems from '../../components/Qiita/Items';
+import QiitaItems from '../../components/qiita/Items';
 import { getItemsFactory } from '../../services/qiita/api';
 
 type Props = {

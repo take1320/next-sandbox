@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/Layout';
 import { makeApiUrl } from '../../libs/api';
 import * as Qiita from '../../services/qiita/models';
-import QiitaItemDetail from '../../components/Qiita/ItemDetail';
+import QiitaItemDetail from '../../components/qiita/ItemDetail';
 
 type Props = {
   item: Qiita.Item;

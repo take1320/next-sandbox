@@ -5,18 +5,18 @@ type Props = {
   item: Qiita.Item;
 };
 
-const Item: FC<Props> = props => (
+const ItemDetail: FC<Props> = ({ item }) => (
   <>
-    <h2>{props.item.title}</h2>
+    <h2>{item.title}</h2>
     <div>
-      <p>ユーザ名: {props.item.user.name}</p>
-      <p>作成日: {props.item.created_at}</p>
-      <a href={props.item.url} target="_blank" rel="noreferrer noopener">
+      <p>ユーザ名: {item.user.name}</p>
+      <p>作成日: {item.created_at}</p>
+      <a href={item.url} target="_blank" rel="noreferrer noopener">
         Qiita
       </a>
-      <p>本文L: {props.item.body}</p>
+      <p>本文L: {item.body}</p>
     </div>
   </>
 );
 
-export default Item;
+export default ItemDetail;
