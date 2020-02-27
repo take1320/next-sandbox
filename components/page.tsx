@@ -1,35 +1,57 @@
 import Link from 'next/link';
-import { connect } from 'react-redux';
 
-import Counter from './counter';
-import Clock from './clock';
+import Counter from './Counter';
+import Clock from './Clock';
+
+export interface PageProps {
+  error?: any;
+  linkTo?: any;
+  NavigateTo?: any;
+  placeholderData?: any;
+  title?: string;
+  lastUpdate?: any;
+  light?: any;
+  count?: any;
+  increment?: any;
+  decrement?: any;
+  reset?: any;
+}
 
 function Page({
   error,
   linkTo,
   NavigateTo,
-  userData,
+  placeholderData,
   title,
-  clock,
-  counter,
-}: any) {
+  lastUpdate,
+  light,
+  count,
+  increment,
+  decrement,
+  reset,
+}: PageProps) {
   return (
     <div>
       <h1>{title}</h1>
-      <Clock lastUpdate={clock.lastUpdate} light={clock.light} />
-      <Counter counter={counter} />
+      <Clock lastUpdate={lastUpdate} light={light} />
+      <Counter
+        count={count}
+        increment={increment}
+        decrement={decrement}
+        reset={reset}
+      />
       <nav>
         <Link href={linkTo}>
           <a>Navigate: {NavigateTo}</a>
         </Link>
       </nav>
-      {userData.placeholderData && (
+      {placeholderData && (
         <pre>
-          <code>{JSON.stringify(userData.placeholderData, null, 2)}</code>
+          <code>{JSON.stringify(placeholderData, null, 2)}</code>
         </pre>
       )}
       {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
     </div>
   );
 }
-export default connect(state => state)(Page);
+export default Page;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { loadData } from '../actions/userData';
 import { startClock, tickClock } from '../actions/clock';
 import Layout from '../components/Layout';
-import Page from '../components/page';
+import Page from '../container/Page';
 
 const IndexPage: NextPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const IndexPage: NextPage = () => {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
       <h1>Hello Next.js 👋</h1>
-      <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />;
+      <Page />;
     </Layout>
   );
 };
@@ -26,7 +26,6 @@ IndexPage.getInitialProps = async (
 ): Promise<{ isServer: boolean }> => {
   const { store, isServer } = ctx;
   store.dispatch(tickClock(isServer));
-
   if (!store.getState().userData.placeholderData) {
     store.dispatch(loadData());
   }
@@ -34,4 +33,4 @@ IndexPage.getInitialProps = async (
   return { isServer };
 };
 
-export default connect()(IndexPage);
+export default IndexPage;

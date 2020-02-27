@@ -1,45 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { FC } from 'react';
 
-import { increment, decrement, reset } from '../actions/counter';
-
-interface Props {
-  counter: any;
-  dispatch: any;
+export interface CounterProps {
+  count: number;
+  increment?: () => void;
+  decrement?: () => void;
+  reset?: () => void;
 }
 
-class Counter extends Component<Props> {
-  increment = () => {
-    this.props.dispatch(increment());
-  };
+const Counter: FC<CounterProps> = ({
+  count = 0,
+  increment = () => undefined,
+  decrement = () => undefined,
+  reset = () => undefined,
+}) => {
+  return (
+    <div>
+      <style jsx>{`
+        div {
+          padding: 0 0 20px 0;
+        }
+      `}</style>
+      <h1>
+        Count: <span>{count}</span>
+      </h1>
+      <button onClick={increment}>+1</button>
+      <button onClick={decrement}>-1</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+};
 
-  decrement = () => {
-    this.props.dispatch(decrement());
-  };
-
-  reset = () => {
-    this.props.dispatch(reset());
-  };
-
-  render() {
-    const { counter } = this.props;
-    return (
-      <div>
-        <style jsx>{`
-          div {
-            padding: 0 0 20px 0;
-          }
-        `}</style>
-        <h1>
-          Count: <span>{counter.count}</span>
-        </h1>
-        <button onClick={this.increment}>+1</button>
-        <button onClick={this.decrement}>-1</button>
-        <button onClick={this.reset}>Reset</button>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ count }: any) => ({ count });
-export default connect(mapStateToProps)(Counter);
+export default Counter;
