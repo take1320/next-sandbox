@@ -1,42 +1,25 @@
-import { connect } from 'react-redux';
+import { FC } from 'react';
+import { useSelector } from 'react-redux';
 
 import { ReduxState } from '../reducers/rootReducer';
-import Clock, { ClockProps } from '../components/Clock';
+import Clock from '../components/Clock';
 
-// import { increment, decrement, reset } from '../actions/counter';
-import { FC } from 'react';
-import { startClock, tickClock } from '../actions/clock';
-import { bindActionCreators, Dispatch } from 'redux';
+const ClockContainer: FC = () => {
+  const storeStates = useSelector((state: ReduxState) => ({
+    lastUpdate: state.clock.lastUpdate,
+    light: state.clock.light,
+  }));
 
-interface DispatchProps {
-  startClock: () => void;
-  tickClock: (isServer: boolean) => void;
-}
-
-type EnhancedProps = DispatchProps & ClockProps;
-
-const mapStateToProps = (state: ReduxState): ClockProps => ({
-  lastUpdate: state.clock.lastUpdate,
-  light: state.clock.light,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
-  bindActionCreators(
-    {
-      startClock: () => startClock(),
-      tickClock: (isServer: boolean) => tickClock(isServer),
-    },
-    dispatch,
-  );
-
-const ClockContainer: FC<EnhancedProps> = props => {
   // MEMO: SSR時に時計を動かしたいなら、getInitialPropsの中でtifckCLockする
+  // const dispatch = useDispatch();
   // useEffect(() => {
-  //   props.startClock();
-  //   props.tickClock(false);
+  //   dispatch(startClock());
+  //   dispatch(tickClock(false));
   // }, []);
 
-  return <Clock {...props} />;
+  return (
+    <Clock lastUpdate={storeStates.lastUpdate} light={storeStates.light} />
+  );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClockContainer);
+export default ClockContainer;

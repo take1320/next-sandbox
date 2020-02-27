@@ -1,44 +1,45 @@
 import { FC, useEffect } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { loadData } from '../actions/userData';
 import { ReduxState } from '../reducers/rootReducer';
-import Page, { PageProps } from '../components/Page';
+import Page from '../components/Page';
 
-interface DispatchProps {
-  loadData: () => void;
+// MEMO: Containerで引数を受け取りたいので、Props型定義
+export interface PageContainerPops {
+  title: string;
+  linkTo: string;
+  NavigateTo: string;
 }
 
-type EnhancedProps = DispatchProps & PageProps;
+const PageContainer: FC<PageContainerPops> = ({
+  title,
+  linkTo,
+  NavigateTo,
+}) => {
+  const dispatch = useDispatch();
+  const storeStates = useSelector((state: ReduxState) => ({
+    placeholderData: state.userData.placeholderData,
+  }));
 
-const mapStateToProps = (state: ReduxState): PageProps => ({
-  placeholderData: state.userData.placeholderData,
-  title: 'Sample Page hoge',
-  linkTo: '/other',
-  NavigateTo: 'Other Page',
-});
-
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
-  bindActionCreators(
-    {
-      loadData: () => loadData(),
-    },
-    dispatch,
-  );
-
-const PageContainer: FC<EnhancedProps> = props => {
   // SSR時に読み込み済みの場合は新しくロードを実行しないか検証
   useEffect(() => {
-    if (!props.placeholderData) {
+    if (!storeStates.placeholderData) {
       console.log('useEffect loadData');
-      props.loadData();
+      dispatch(loadData());
     } else {
       console.log('unused useEffect loadData');
     }
   }, []);
 
-  return <Page {...props} />;
+  return (
+    <Page
+      placeholderData={storeStates.placeholderData}
+      title={title}
+      linkTo={linkTo}
+      NavigateTo={NavigateTo}
+    />
+  );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);
+export default PageContainer;

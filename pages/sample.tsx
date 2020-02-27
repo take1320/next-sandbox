@@ -16,7 +16,7 @@ const IndexPage: NextPage = () => {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
       <h1>Hello Next.js 👋</h1>
-      <Page />;
+      <Page title="Hello Hooks" linkTo="/items" NavigateTo="Qiita Items" />;
     </Layout>
   );
 };
