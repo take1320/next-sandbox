@@ -1,5 +1,4 @@
-import { UserDataAction } from '../../actions/userData';
-import * as ActionType from '../../actions/userDataConstatns';
+import { UserDataAction, ActionType } from '../../actions/userData';
 import { Reducer } from 'react';
 
 export interface UserDataState {

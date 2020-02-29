@@ -1,15 +1,19 @@
-import * as ActionType from './counterConstants';
+export const ActionType = {
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT',
+  RESET: 'RESET',
+} as const;
 
 export const increment = () => ({
-  type: ActionType.INCREMENT as typeof ActionType.INCREMENT,
+  type: ActionType.INCREMENT,
 });
 
 export const decrement = () => ({
-  type: ActionType.DECREMENT as typeof ActionType.DECREMENT,
+  type: ActionType.DECREMENT,
 });
 
 export const reset = () => ({
-  type: ActionType.RESET as typeof ActionType.RESET,
+  type: ActionType.RESET,
 });
 
 export type CounterAction =

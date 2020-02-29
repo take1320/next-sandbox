@@ -1,7 +1,6 @@
 import { call, delay, put, take } from 'redux-saga/effects';
 
-import { tickClock } from '../actions/clock';
-import * as ActionType from '../actions/clockConstatnts';
+import { tickClock, ActionType } from '../actions/clock';
 
 function* runClockSaga() {
   yield take(ActionType.START_CLOCK);

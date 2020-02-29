@@ -1,5 +1,13 @@
 import { Item } from '../services/qiita/models';
-import * as ActionType from './qiitaConstants';
+
+export const ActionType = {
+  GET_ITEMS_START: 'QIITA/GET_ITEMS_START',
+  GET_ITEMS_SUCCEED: 'QIITA/GET_ITEMS_SUCCEED',
+  GET_ITEMS_FAIL: 'QIITA/GET_ITEMS_FAIL',
+  GET_ITEM_START: 'QIITA/GET_ITEM_START',
+  GET_ITEM_SUCCEED: 'QIITA/GET_ITEM_SUCCEED',
+  GET_ITEM_FAIL: 'QIITA/GET_ITEM_FAIL',
+} as const;
 
 interface GetItemsResult {
   items: Item[];
@@ -13,16 +21,16 @@ interface GetItemResult {
 
 export const getItems = {
   start: () => ({
-    type: ActionType.GET_ITEMS_START as typeof ActionType.GET_ITEMS_START,
+    type: ActionType.GET_ITEMS_START,
   }),
 
   succeed: (result: GetItemsResult) => ({
-    type: ActionType.GET_ITEMS_SUCCEED as typeof ActionType.GET_ITEMS_SUCCEED,
+    type: ActionType.GET_ITEMS_SUCCEED,
     payload: { result },
   }),
 
   fail: (error: Error) => ({
-    type: ActionType.GET_ITEMS_FAIL as typeof ActionType.GET_ITEMS_FAIL,
+    type: ActionType.GET_ITEMS_FAIL,
     payload: { error },
     error: true,
   }),
