@@ -1,29 +1,27 @@
 import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
-import fetch from 'isomorphic-unfetch';
 import Layout from '../../components/Layout';
-import { makeApiUrl } from '../../libs/api';
-import * as Qiita from '../../services/qiita/models';
-import QiitaItemDetail from '../../components/qiita/ItemDetail';
+import ItemDetailContainer from '../../container/qiita/ItemDetail';
+import { getItem } from '../../actions/qiita';
 
-type Props = {
-  item: Qiita.Item;
-};
-const ItemPage: NextPage<Props> = props => (
+interface ItemProps {
+  id: string | string[];
+}
+
+const ItemPage: NextPage<ItemProps> = ({ id }) => (
   <Layout>
     <div>
       <h1>Qiita Item Detail</h1>
-      <QiitaItemDetail item={props.item} />
+      <ItemDetailContainer id={id} />
     </div>
   </Layout>
 );
 
-ItemPage.getInitialProps = async (ctx: NextPageContext): Promise<Props> => {
-  const { query, req } = ctx;
+ItemPage.getInitialProps = async (ctx: NextPageContext): Promise<ItemProps> => {
+  const { store, query } = ctx;
   const { id } = query;
-  const res = await fetch(makeApiUrl(`/api/qiita/items/${id}`, req));
-  const item = await res.json();
-  return { item };
+  store.dispatch(getItem.start({ id }));
+  return { id };
 };
 
 export default ItemPage;

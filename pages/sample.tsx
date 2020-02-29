@@ -16,7 +16,7 @@ const IndexPage: NextPage = () => {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
       <h1>Hello Next.js 👋</h1>
-      <Page title="Hello Hooks" linkTo="/items" NavigateTo="Qiita Items" />;
+      <Page title="Hello Hooks!" linkTo="/items" NavigateTo="Qiita Items" />;
     </Layout>
   );
 };
@@ -29,7 +29,7 @@ IndexPage.getInitialProps = async (
 
   // Stateの状態による実行有無の判定確認
   if (!store.getState().userData.placeholderData) {
-    console.log('getInitialProps loadData');
+    console.log('getInitialProps loadData!');
     store.dispatch(loadData());
   } else {
     console.log('unused getInitialProps loadData');

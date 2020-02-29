@@ -6,12 +6,15 @@ import { Item } from '../services/qiita/models';
 
 export interface QiitaState {
   items?: Item[];
-  itemDetail?: Item | null;
+  itemDetail?: Item;
+  isLoading: boolean;
+  error?: any;
 }
 
 export const initialState: QiitaState = {
   items: [],
-  itemDetail: null,
+  itemDetail: undefined,
+  isLoading: false,
 };
 
 const qiitaReducer: Reducer<QiitaState, QiitaAction> = (
@@ -22,35 +25,41 @@ const qiitaReducer: Reducer<QiitaState, QiitaAction> = (
     case ActionType.GET_ITEMS_START:
       return {
         ...state,
+        isLoading: true,
       };
 
     case ActionType.GET_ITEMS_SUCCEED:
       return {
         ...state,
-        ...{ items: action.payload.result.items },
+        items: action.payload.result.items,
+        isLoading: false,
       };
 
     case ActionType.GET_ITEMS_FAIL:
       return {
         ...state,
-        ...{ error: action.payload.error },
+        error: action.payload.error,
+        isLoading: false,
       };
 
     case ActionType.GET_ITEM_START:
       return {
         ...state,
+        isLoading: true,
       };
 
     case ActionType.GET_ITEM_SUCCEED:
       return {
         ...state,
-        ...{ item: action.payload.result.item },
+        itemDetail: action.payload.result.item,
+        isLoading: false,
       };
 
     case ActionType.GET_ITEM_FAIL:
       return {
         ...state,
-        ...{ error: action.payload.error },
+        error: action.payload.error,
+        isLoading: false,
       };
 
     default: {

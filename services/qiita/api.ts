@@ -32,3 +32,23 @@ export const getItemsFactory = (optionConfig?: ApiConfig) => {
 
   return getItems;
 };
+
+export const getItemFactory = (optionConfig?: ApiConfig) => {
+  const config = {
+    ...DEFAULT_API_CONFIG,
+    ...optionConfig,
+  };
+
+  const getItem = async (id: string | string[]) => {
+    const response = await fetch(`${config.baseURL}/api/qiita/items/${id}`);
+
+    if (response.status !== 200) {
+      throw new Error(`Server Error${response.status}`);
+    }
+    const item: Item = await response.json();
+
+    return item;
+  };
+
+  return getItem;
+};

@@ -4,6 +4,9 @@ import * as ActionType from './qiitaConstants';
 interface GetItemsResult {
   items: Item[];
 }
+interface GetItemParams {
+  id: string | string[];
+}
 interface GetItemResult {
   item: Item;
 }
@@ -26,8 +29,9 @@ export const getItems = {
 };
 
 export const getItem = {
-  start: () => ({
+  start: (params: GetItemParams) => ({
     type: ActionType.GET_ITEM_START as typeof ActionType.GET_ITEM_START,
+    payload: { params },
   }),
 
   succeed: (result: GetItemResult) => ({
