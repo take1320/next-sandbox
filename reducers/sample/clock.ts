@@ -22,6 +22,9 @@ const clockReducer: Reducer<ClockState, ClockAction> = (
     case ActionType.START_CLOCK:
       return state;
 
+    case ActionType.STOP_CLOCK:
+      return state;
+
     case ActionType.TICK_CLOCK:
       return {
         ...state,

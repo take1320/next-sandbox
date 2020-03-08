@@ -1,15 +1,22 @@
-import { call, delay, put, take } from 'redux-saga/effects';
+import { delay, put, take, cancel, call, fork } from 'redux-saga/effects';
 
 import { tickClock, ActionType } from '../actions/clock';
 
 function* runClockSaga() {
-  yield take(ActionType.START_CLOCK);
   while (true) {
     yield put(tickClock(false));
     yield delay(1000);
   }
 }
 
-const sagas = [call(runClockSaga)];
+function* watchClockSaga() {
+  while (yield take(ActionType.START_CLOCK)) {
+    const task = yield fork(runClockSaga);
+    yield take(ActionType.STOP_CLOCK);
+    yield cancel(task);
+  }
+}
+
+const sagas = [call(watchClockSaga)];
 
 export default sagas;
