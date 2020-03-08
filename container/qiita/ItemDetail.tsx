@@ -13,6 +13,7 @@ const ItemDetailContainer: FC<Props> = ({ id }) => {
   const dispatch = useDispatch();
   const storeStates = useSelector((state: ReduxState) => ({
     itemDetail: state.qiita.itemDetail,
+    isLoading: state.qiita.isLoading,
   }));
 
   // SSR時に読み込み済みの場合は新しくロードを実行しないか検証
@@ -25,7 +26,12 @@ const ItemDetailContainer: FC<Props> = ({ id }) => {
     }
   }, []);
 
-  return <ItemDetail item={storeStates.itemDetail} />;
+  return (
+    <ItemDetail
+      item={storeStates.itemDetail}
+      isLoading={storeStates.isLoading}
+    />
+  );
 };
 
 export default ItemDetailContainer;
