@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import Markdown from 'react-markdown';
+
 import * as Qiita from '../../services/qiita/models';
 import {
   Header,
@@ -43,7 +45,7 @@ const ItemDetail: FC<Props> = ({ item = {}, isLoading = false }) => {
         </Label>
       ))}
       <Divider />
-      <p>{item.body}</p>
+      <Markdown source={item.body} />
     </>
   );
 };
