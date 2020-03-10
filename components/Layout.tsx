@@ -18,16 +18,12 @@ const Layout: React.FunctionComponent<Props> = ({
     </Head>
     <header>
       <nav>
-        <Link href="/">
-          <a>Home</a>
+        <Link href="/items">
+          <a>Qiita記事一覧</a>
         </Link>{' '}
         |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
+        <Link href="/sample">
+          <a>サンプル</a>
         </Link>
       </nav>
     </header>

@@ -1,5 +1,4 @@
-import { CounterAction } from '../../actions/counter';
-import * as ActionType from '../../actions/counterConstants';
+import { CounterAction, ActionType } from '../../actions/counter';
 import { Reducer } from 'react';
 export interface CounterState {
   count: number;

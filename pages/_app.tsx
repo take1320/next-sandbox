@@ -3,9 +3,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import { NextPageContext, NextPage } from 'next';
+import { Container } from 'semantic-ui-react';
 
 import createStore from '../store/configureStore';
-import { NextPageContext, NextPage } from 'next';
+
+import 'semantic-ui-css/semantic.min.css';
 
 interface Props {
   Component: NextPage;
@@ -33,7 +36,9 @@ class MyApp extends App<Props> {
     const { Component, pageProps, store } = this.props;
     return (
       <Provider store={store}>
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </Provider>
     );
   }

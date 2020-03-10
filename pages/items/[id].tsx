@@ -10,10 +10,7 @@ interface ItemProps {
 
 const ItemPage: NextPage<ItemProps> = ({ id }) => (
   <Layout>
-    <div>
-      <h1>Qiita Item Detail</h1>
-      <ItemDetailContainer id={id} />
-    </div>
+    <ItemDetailContainer id={id} />
   </Layout>
 );
 

@@ -1,7 +1,6 @@
 import { Reducer } from 'react';
 
-import { QiitaAction } from '../actions/qiita';
-import * as ActionType from '../actions/qiitaConstants';
+import { QiitaAction, ActionType } from '../actions/qiita';
 import { Item } from '../services/qiita/models';
 
 export interface QiitaState {

@@ -1,8 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import 'isomorphic-unfetch';
 
-import { failure, loadDataSuccess } from '../actions/userData';
-import * as ActionType from '../actions/userDataConstatns';
+import { failure, loadDataSuccess, ActionType } from '../actions/userData';
 
 function* loadDataSaga() {
   try {

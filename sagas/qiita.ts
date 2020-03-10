@@ -1,7 +1,6 @@
 import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
-import * as ActionType from '../actions/qiitaConstants';
-import { getItems, getItem } from '../actions/qiita';
+import { getItems, getItem, ActionType } from '../actions/qiita';
 import { getItemsFactory, getItemFactory } from '../services/qiita/api';
 
 function* runGetItems() {

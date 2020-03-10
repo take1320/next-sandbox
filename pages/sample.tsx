@@ -3,14 +3,15 @@ import { NextPage, NextPageContext } from 'next';
 import { useDispatch } from 'react-redux';
 
 import { loadData } from '../actions/userData';
-import { startClock, tickClock } from '../actions/clock';
+import { startClock, tickClock, stopClock } from '../actions/clock';
 import Layout from '../components/Layout';
 import Page from '../container/Page';
 
 const IndexPage: NextPage = () => {
   const dispatch = useDispatch();
-  React.useEffect(() => {
+  React.useEffect((): any => {
     dispatch(startClock());
+    return () => dispatch(stopClock());
   });
 
   return (
