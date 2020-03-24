@@ -16,13 +16,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
+    "target": "esnext"
   },
-  "exclude": ["node_modules", "dist", ".next", "out", "next.config.js"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }
