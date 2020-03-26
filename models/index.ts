@@ -1,4 +1,5 @@
 import { Sequelize, Options } from 'sequelize';
+import TestUser from './testUser';
 
 import config from '../config/config.json';
 
@@ -13,11 +14,15 @@ const options: Options = {
   dialect: 'mysql',
 };
 
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
   options.database || '',
   options.username || '',
   options.password,
   options,
 );
 
-export default sequelize;
+const models = {
+  TestUser,
+};
+
+export type Models = typeof models;
