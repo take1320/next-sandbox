@@ -40,15 +40,27 @@ TestUser.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      field: 'id',
     },
     lastName: {
       type: DataTypes.STRING,
+      field: 'last_name',
     },
     firstName: {
       type: DataTypes.STRING,
+      field: 'first_name',
     },
     email: {
       type: DataTypes.STRING,
+      field: 'email',
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      field: 'created_at',
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      field: 'updated_at',
     },
   },
   {
