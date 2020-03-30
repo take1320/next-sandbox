@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Item } from '../../../../services/qiita/models';
+import TestUser from '../../../../models/testUser';
 
 export default async (
   _: NextApiRequest,
@@ -20,6 +21,9 @@ export default async (
     if (response.status !== 200) {
       throw new Error(`response error status:${response.status}`);
     }
+
+    const hoge = await TestUser.findAll();
+    console.log(hoge);
 
     const items: Array<Item> = await response.json();
     res.status(200).json(items);

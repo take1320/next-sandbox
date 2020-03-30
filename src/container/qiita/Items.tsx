@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ReduxState } from '../../reducers/rootReducer';
 import { getItems } from '../../actions/qiita';
-import Items from '../../components/qiita/Items';
+import Items from '../../components/Qiita/Items';
 
 const ItemsContainer: FC = () => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ReduxState } from '../../reducers/rootReducer';
 import { getItem } from '../../actions/qiita';
-import ItemDetail from '../../components/qiita/ItemDetail';
+import ItemDetail from '../../components/Qiita/ItemDetail';
 
 interface Props {
   id: string | string[];
