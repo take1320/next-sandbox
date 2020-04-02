@@ -1,5 +1,4 @@
 import { Sequelize, Options } from 'sequelize';
-import TestUser from './testUser';
 
 import config from '../../db/config/config.json';
 
@@ -20,9 +19,3 @@ export const sequelize = new Sequelize(
   options.password,
   options,
 );
-
-const models = {
-  TestUser,
-};
-
-export type Models = typeof models;
