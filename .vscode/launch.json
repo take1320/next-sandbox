@@ -1,20 +1,38 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
-      "name": "Launch Chrome against localhost",
+      // For server side rendering debug
+      "type": "node",
+      "request": "launch",
+      "name": "Next: Node",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": [
+        "debug",
+      ],
+      "port": 9229,
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal", // 内部のターミナルタブで起動します
+    },
+    {
+      // For client side rendering debug
       "type": "chrome",
       "request": "launch",
+      "name": "Next: Chrome",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceRoot}",
-      "userDataDir": "${workspaceRoot}/.vscode/chrome",
+      "webRoot": "${workspaceFolder}",
       "sourceMapPathOverrides": {
-        "webpack:///*": "${webRoot}/*"
+        "webpack:///./*": "${webRoot}/src/*"
       }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Next: Full",
+      "configurations": [
+        "Next: Node",
+        "Next: Chrome"
+      ]
     }
   ]
 }
