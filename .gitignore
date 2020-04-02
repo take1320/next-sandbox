@@ -2,6 +2,7 @@
 
 node_modules
 .next
+.env
 .envrc
 
 yarn-error.log
