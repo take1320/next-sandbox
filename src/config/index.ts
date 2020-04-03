@@ -2,12 +2,14 @@ export type Config = {
   qiitaToken: string;
   qiitaClientId: string;
   qiitaClientSecret: string;
+  jwtSecret: string;
 };
 
 export const env: Config = {
   qiitaToken: process.env.QIITA_TOKEN || '',
   qiitaClientId: process.env.QIITA_CLIENT_ID || '',
   qiitaClientSecret: process.env.QIITA_CLIENT_SECRET || '',
+  jwtSecret: process.env.JWT_SECRET || 'hogehoge',
 };
 
 // export QIITA_TOKEN=b3c4635a7ebe648966797c2e7b4176a0f326b7da
