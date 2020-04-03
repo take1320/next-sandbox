@@ -52,3 +52,38 @@ export const getItemFactory = (optionConfig?: ApiConfig) => {
 
   return getItem;
 };
+
+export const postAccessTokenFactory = (optionConfig?: ApiConfig) => {
+  const config = {
+    ...DEFAULT_API_CONFIG,
+    ...optionConfig,
+  };
+
+  const postAccessToken = async (
+    clientId: string,
+    clientSecret: string,
+    code: string,
+  ) => {
+    const requestBody = JSON.stringify({
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      client_id: clientId,
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      client_secret: clientSecret,
+      code: code,
+    });
+
+    const response = await fetch(`${config.baseURL}/api/v2/access_tokens`, {
+      method: 'POST',
+      body: requestBody,
+    });
+
+    if (response.status !== 200) {
+      throw new Error(`Server Error${response.status}`);
+    }
+    const accessToken: any = await response.json();
+
+    return accessToken;
+  };
+
+  return postAccessToken;
+};

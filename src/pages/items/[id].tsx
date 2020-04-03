@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import Layout from '../../components/Layout';
 import ItemDetailContainer from '../../container/qiita/ItemDetail';
-import { getItem } from '../../actions/qiita';
+import { getItem } from '../../redux/actions/qiita';
 
 interface ItemProps {
   id: string | string[];

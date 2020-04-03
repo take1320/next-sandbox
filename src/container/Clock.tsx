@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { ReduxState } from '../reducers/rootReducer';
+import { ReduxState } from '../redux/reducers/rootReducer';
 import Clock from '../components/Clock';
 
 const ClockContainer: FC = () => {

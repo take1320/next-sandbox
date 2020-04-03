@@ -2,8 +2,8 @@ import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { useDispatch } from 'react-redux';
 
-import { loadData } from '../actions/userData';
-import { startClock, tickClock, stopClock } from '../actions/clock';
+import { loadData } from '../redux/actions/userData';
+import { startClock, tickClock, stopClock } from '../redux/actions/clock';
 import Layout from '../components/Layout';
 import Page from '../container/Page';
 

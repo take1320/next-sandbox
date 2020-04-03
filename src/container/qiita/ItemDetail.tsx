@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ReduxState } from '../../reducers/rootReducer';
-import { getItem } from '../../actions/qiita';
+import { ReduxState } from '../../redux/reducers/rootReducer';
+import { getItem } from '../../redux/actions/qiita';
 import ItemDetail from '../../components/Qiita/ItemDetail';
 
 interface Props {

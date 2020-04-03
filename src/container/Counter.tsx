@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { increment, decrement, reset } from '../actions/counter';
-import { ReduxState } from '../reducers/rootReducer';
+import { increment, decrement, reset } from '../redux/actions/counter';
+import { ReduxState } from '../redux/reducers/rootReducer';
 import Counter from '../components/Counter';
 
 const CounterContainer: FC = () => {

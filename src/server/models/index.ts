@@ -1,6 +1,6 @@
 import { Sequelize, Options } from 'sequelize';
 
-import config from '../../db/config/config.json';
+import config from '../../../db/config/config.json';
 
 const dbConfig = config['development'];
 

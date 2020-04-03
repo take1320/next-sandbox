@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NextPage, NextPageContext } from 'next';
-import { getItems } from '../../actions/qiita';
+import { getItems } from '../../redux/actions/qiita';
 import Layout from '../../components/Layout';
 import { Header } from 'semantic-ui-react';
 import ItemsContainer from '../../container/qiita/Items';

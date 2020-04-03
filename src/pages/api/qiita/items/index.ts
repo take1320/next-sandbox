@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Item } from '../../../../services/qiita/models';
-import TestUser from '../../../../models/testUser';
+import TestUser from '../../../../server/models/testUser';
 
 export default async (
   _: NextApiRequest,

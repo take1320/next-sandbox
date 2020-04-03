@@ -2,9 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import url from 'url';
 import querystring from 'querystring';
 import jwt, { SignOptions } from 'jsonwebtoken';
+
 import { env } from '../config/index';
-import Session from '../models/session';
-import { decode } from 'punycode';
 
 export const createSession = async () => {
   // stateを生成

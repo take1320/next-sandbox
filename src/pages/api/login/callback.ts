@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import Session from '../../../models/session';
+import Session from '../../../server/models/session';
 
-import { env } from '../../../config/index';
-import * as auth from '../../../services/auth';
+import { env } from '../../../server/config/index';
+import * as auth from '../../../server/services/auth';
 import * as qiita from '../../../services/qiita/api';
-import { getCookie } from '../../../utils/cookie';
+import { getCookie } from '../../../server/utils/cookie';
 
 export default async (
   req: NextApiRequest,

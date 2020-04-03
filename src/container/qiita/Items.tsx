@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { ReduxState } from '../../reducers/rootReducer';
-import { getItems } from '../../actions/qiita';
+import { ReduxState } from '../../redux/reducers/rootReducer';
+import { getItems } from '../../redux/actions/qiita';
 import Items from '../../components/Qiita/Items';
 
 const ItemsContainer: FC = () => {

@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loadData } from '../actions/userData';
-import { ReduxState } from '../reducers/rootReducer';
+import { loadData } from '../redux/actions/userData';
+import { ReduxState } from '../redux/reducers/rootReducer';
 import Page from '../components/Page';
 
 // MEMO: Containerで引数を受け取りたいので、Props型定義

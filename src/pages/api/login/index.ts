@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import Session from '../../../models/session';
+import Session from '../../../server/models/session';
 
 // import testUser from '../../../models/testUser';
-import * as auth from '../../../services/auth';
-import { setCookie } from '../../../utils/cookie';
+import * as auth from '../../../server/services/auth';
+import { setCookie } from '../../../server/utils/cookie';
 
 export default async (
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
   // stateを作る

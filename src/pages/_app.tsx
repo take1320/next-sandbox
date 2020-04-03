@@ -6,7 +6,7 @@ import withReduxSaga from 'next-redux-saga';
 import { NextPageContext, NextPage } from 'next';
 import { Container } from 'semantic-ui-react';
 
-import createStore from '../store/configureStore';
+import createStore from '../redux/store/configureStore';
 
 import 'semantic-ui-css/semantic.min.css';
 

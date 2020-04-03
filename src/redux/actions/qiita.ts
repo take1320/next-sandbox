@@ -1,4 +1,4 @@
-import { Item } from '../services/qiita/models';
+import { Item } from '../../services/qiita/models';
 
 export const ActionType = {
   GET_ITEMS_START: 'QIITA/GET_ITEMS_START',
